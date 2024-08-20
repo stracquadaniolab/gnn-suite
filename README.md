@@ -25,9 +25,8 @@ The following models are included:
 
 ## Architecture
 
-<div style="background-color: Coral; display: inline-block; padding: 10px;">
-  <img src="assets/nextflow_pipeline_transparent.png" alt="Nextflow Pipeline">
-</div>
+
+![New Architecture](assets/nextflow_pipeline_with_bg.png)
 
 
 ## Running the workflow
