@@ -116,4 +116,5 @@ nextflow run stracquadaniolab/gnn-suite-nf
 ## Authors
 
 - Giovanni Stracquadanio
+- Ian Simpson
 - Sebestyen Kamp
