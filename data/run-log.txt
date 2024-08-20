@@ -1,0 +1,5 @@
+num_features 3
+num_classes 2
+device cpu
+train_loader <torch_geometric.loader.dataloader.DataLoader object at 0x7f19d57ea530>
+pos_weight tensor(1.)

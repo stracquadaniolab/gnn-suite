@@ -1,0 +1,10 @@
+work/
+results/
+*.pyc
+.vscode
+.nextflow*
+.empty
+logs/
+__pycache__
+staging/
+.DS_Store
