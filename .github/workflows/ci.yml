@@ -38,9 +38,9 @@ jobs:
             ${{ runner.os }}-nextflow-
             
       - name: List available Docker images
-          run: |
-          docker image ls  
-          
+        run: |
+            docker images
+
       - name: Testing Nextflow pipeline with test profile
         run: |
           chmod +x bin/*
