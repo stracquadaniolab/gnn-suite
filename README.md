@@ -34,7 +34,7 @@ The following models are included:
 ### Install or update the workflow
 
 ```bash
-nextflow pull stracquadaniolab/gnn-suite-nf
+nextflow pull stracquadaniolab/gnn-suite
 ```
 
 ### Run the analysis
