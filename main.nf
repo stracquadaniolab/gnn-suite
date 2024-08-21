@@ -79,8 +79,6 @@ process PlotEpochMetrics {
 }
 
 
-
-
 process ComputeStats {
     tag "${model}"
 
@@ -110,6 +108,25 @@ process CollectStats {
         # collect stats
         stats.py collect stats.tex ${results}
     """
+}
+
+process HyperparameterOptimization {
+    input:
+    path config_file
+    path data_files
+  
+
+    output:
+    path "optuna_${params.dataSet}.json" into optuna_results
+
+    script:
+    """
+    python3 hyperopt_all_2.py --config ${config_file} --data ${data_files} --output optuna_${params.dataSet}.json
+    """
+}
+
+workflow hyperoptWorkflow {
+    HyperparameterOptimization(config_file: params.config, data_files: params.data)
 }
 
 
