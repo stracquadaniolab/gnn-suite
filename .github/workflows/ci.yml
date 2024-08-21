@@ -36,7 +36,11 @@ jobs:
           key: ${{ runner.os }}-nextflow-${{ hashFiles('nextflow.config') }}
           restore-keys: |
             ${{ runner.os }}-nextflow-
-
+            
+      - name: List available Docker images
+          run: |
+          docker image ls  
+          
       - name: Testing Nextflow pipeline with test profile
         run: |
           chmod +x bin/*
