@@ -37,7 +37,13 @@ The following models are included:
 nextflow pull stracquadaniolab/gnn-suite
 ```
 
-### Run the analysis
+### Run a test
+
+```bash
+nextflow run stracquadaniolab/gnn-suite -profile docker,test
+```
+
+### Run an experiment
 
 ```bash
 nextflow run stracquadaniolab/gnn-suite -profile docker,<experiment_file>
