@@ -391,7 +391,7 @@ def run(
     )
 
     # Print network statistics
-    print_network_statistics(data)
+    # print_network_statistics(data)
 
     # Determine the device to use for computation
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

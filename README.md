@@ -127,8 +127,16 @@ docker pull ghcr.io/stracquadaniolab/gnn-suite:latest
     models = ["gcn", "gat", ..., "new_model"]
     ```
 
-
-
+## FAQ
+In case:
+```groovy
+Command error:
+  .command.sh: line 2: ../gnn-suite/bin/plot.py: Permission denied
+```
+Give permission to run:
+```groovy
+ chmod +x /home/<path>/code/gnn-suite/bin/plot.py
+```
 ## Paper
 
 - Forthcoming
