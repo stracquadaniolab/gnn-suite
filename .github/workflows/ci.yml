@@ -23,8 +23,11 @@ jobs:
       - name: Install Nextflow
         uses: stracquadaniolab/gh-action-setup-nextflow@v0.2.0
 
-      - name: Move Nextflow to /usr/local/bin
-        run: mv /home/runner/work/gnn-suite/gnn-suite/nextflow /usr/local/bin/nextflow
+      - name: List files in the working directory
+        run: ls -alh /home/runner/work/gnn-suite/gnn-suite
+
+      - name: Find Nextflow binary location
+        run: find /home/runner/work/gnn-suite/gnn-suite -name "nextflow" -exec mv {} /usr/local/bin/nextflow \;
 
       - name: Cache Nextflow dependencies
         uses: actions/cache@v2
