@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.description="A Docker image with a full pytorch-g
 LABEL org.opencontainers.image.url="https://github.com/stracquadaniolab/docker-pytorch-geometric"
 LABEL org.opencontainers.image.documentation="https://github.com/stracquadaniolab/docker-pytorch-geometric"
 LABEL org.opencontainers.image.source="https://github.com/stracquadaniolab/docker-pytorch-geometric"
-LABEL org.opencontainers.image.revision="v0.0.10"
+LABEL org.opencontainers.image.revision="v0.2.21"
 LABEL org.opencontainers.image.vendor="stracquadaniolab"
 LABEL org.opencontainers.image.authors="Giovanni Stracquadanio"
 

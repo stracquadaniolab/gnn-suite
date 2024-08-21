@@ -1,6 +1,6 @@
 # gnn-suite
 
-![](https://img.shields.io/badge/current_version-v0.0.10-blue)
+![](https://img.shields.io/badge/current_version-v0.2.21-blue)
 
 
 ![](https://github.com/stracquadaniolab/gnn-bench-nf/workflows/build/badge.svg)
