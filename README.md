@@ -103,7 +103,7 @@ nextflow run stracquadaniolab/gnn-suite-nf
         return NewModel(num_features, num_classes, dropout=dropout)
     ```
 
-4. **Include in Experiment**: Add the new model name to the `models` list in your experiment config:
+4. **Include in Experiment**: Add the new model name to the `models` list in your experiment config (`<config_file>.config`):
     ```groovy
     models = ["gcn", "gat", ..., "new_model"]
     ```
