@@ -43,6 +43,14 @@ nextflow pull stracquadaniolab/gnn-suite
 nextflow run stracquadaniolab/gnn-suite -profile docker,<experiment_file>
 ```
 
+## Docker Image
+ 
+[View the `gnn-suite` Docker image on GitHub Container Registry](https://github.com/orgs/stracquadaniolab/packages/container/package/gnn-suite), you can also download it using:
+
+```bash
+docker pull ghcr.io/stracquadaniolab/gnn-suite:latest
+```
+
 ## Adding a New Experiment
 
 1. **Create a Config File**: Create a new configuration file `<experiment_file>.config` with the parameters for the experiment:
@@ -114,13 +122,7 @@ nextflow run stracquadaniolab/gnn-suite -profile docker,<experiment_file>
     ```
 
 
-## Docker Image
- 
-[View the `gnn-suite` Docker image on GitHub Container Registry](https://github.com/orgs/stracquadaniolab/packages/container/package/gnn-suite), you can also download it using:
 
-```bash
-docker pull ghcr.io/stracquadaniolab/gnn-suite:latest
-```
 ## Paper
 
 - Forthcoming
