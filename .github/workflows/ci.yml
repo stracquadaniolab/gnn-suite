@@ -37,13 +37,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextflow-
 
-      - name: Test Nextflow pipeline
+      - name: Testing Nextflow pipeline with test profile
         run: |
-          docker run --rm \
-          -v ${{ github.workspace }}:/workspace \
-          -w /workspace \
-          ghcr.io/${{ github.repository }}:latest \
-          nextflow run . -profile test,ci,docker
+          chmod +x bin/*
+          nextflow run . -profile test,ci,docker  
 
       # Uncomment this section only if you need to push a new image
       # - name: Push image to GitHub Container Registry
