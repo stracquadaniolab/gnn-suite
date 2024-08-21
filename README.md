@@ -3,7 +3,7 @@
 ![](https://img.shields.io/badge/current_version-v0.2.21-blue)
 
 
-![](https://github.com/stracquadaniolab/gnn-bench-nf/workflows/build/badge.svg)
+![](https://github.com/stracquadaniolab/gnn-suite/workflows/build/badge.svg)
 
 ![](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
 ![](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
