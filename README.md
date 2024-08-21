@@ -40,12 +40,12 @@ nextflow pull stracquadaniolab/gnn-suite-nf
 ### Run the analysis
 
 ```bash
-nextflow run stracquadaniolab/gnn-suite-nf
+nextflow run stracquadaniolab/gnn-suite -profile docker,<experiment_file>
 ```
 
 ## Adding a New Experiment
 
-1. **Create a Config File**: Create a new configuration file `<config_file>.config` with the parameters for the experiment:
+1. **Create a Config File**: Create a new configuration file `<experiment_file>.config` with the parameters for the experiment:
     ```groovy
     // profile to test the string workflow
     params {
@@ -59,7 +59,7 @@ nextflow run stracquadaniolab/gnn-suite-nf
       dropout = 0.2
       alpha = 0.1
       theta = 1
-      dataSet = "<config_file_tag>"
+      dataSet = "<cexperiment_file_tag>"
     }
     ```
 
@@ -70,14 +70,19 @@ nextflow run stracquadaniolab/gnn-suite-nf
 
       // test profile for the biogrid cosmic network defining some data
       <config_file> {
-        includeConfig '<config_file>.config'
+        includeConfig '<experiment_file>.config'
       }
     }
     ```
 
 3. **Run the Experiment**: Execute the pipeline with the new profile using:
     ```bash
-    nextflow run main.nf -profile <config_file>
+    nextflow run main.nf -profile docker, <experiment_file>
+    ```
+
+    or
+    ```bash
+    nextflow run stracquadaniolab/gnn-suite -profile docker,<experiment_file>
     ```
 
 ## Adding a New Model
@@ -103,18 +108,27 @@ nextflow run stracquadaniolab/gnn-suite-nf
         return NewModel(num_features, num_classes, dropout=dropout)
     ```
 
-4. **Include in Experiment**: Add the new model name to the `models` list in your experiment config (`<config_file>.config`):
+4. **Include in Experiment**: Add the new model name to the `models` list in your experiment config (`<experiment_file>.config`):
     ```groovy
     models = ["gcn", "gat", ..., "new_model"]
     ```
 
 
+## Docker Image
+ 
+[View the `gnn-suite` Docker image on GitHub Container Registry](https://github.com/orgs/stracquadaniolab/packages/container/package/gnn-suite), you can also download it using:
+
+```bash
+docker pull ghcr.io/stracquadaniolab/gnn-suite:latest
+```
 ## Paper
 
 - Forthcoming
 
 ## Authors
 
-- Giovanni Stracquadanio
+- Sebestyén Kamp
 - Ian Simpson
-- Sebestyen Kamp
+- Giovanni Stracquadanio
+
+
