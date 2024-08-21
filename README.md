@@ -1,4 +1,4 @@
-# gnn-suite
+# GNNsuite
 
 ![](https://img.shields.io/badge/current_version-v0.2.21-blue)
 
