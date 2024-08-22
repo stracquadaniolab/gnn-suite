@@ -62,7 +62,7 @@ def run_optuna(data_pair, model):
     data_name = data_pair['name']
     model_name = model
 
-    num_epochs = 250
+    num_epochs = 25
     # RENAME FOR DIFFERENT MODELS AND IN OBJECTIVE FUNCTION above
     #model_name = "GCN2"
 
@@ -85,7 +85,7 @@ def run_optuna(data_pair, model):
                                                     network_filename,
                                                     num_epochs),
                                                 n_jobs=-1,
-                                                n_trials=300)
+                                                n_trials=10)
 
 
     # Print the best trial
@@ -115,26 +115,26 @@ if __name__ == "__main__":
         'name': 'string',
         'networkFile': '/home/essharom/code/cancer-gnn-nf/data/entrez_stringhc.tsv',
         'geneFile': '/home/essharom/code/cancer-gnn-nf/data/entrez_fpancanall_nstringhc_lbailey.csv'
-    },
-    {
-        'name': 'string_cosmic',
-        'networkFile': '/home/essharom/code/cancer-gnn-nf/data/entrez_stringhc.tsv',
-        'geneFile': '/home/essharom/code/cancer-gnn-nf/data/entrez_fpancanall_nstringhc_lcosmic.csv'
-    },
-    {
-        'name': 'biogrid',
-        'networkFile': '/home/essharom/code/cancer-gnn-nf/data/entrez_biogridhc.tsv',
-        'geneFile': '/home/essharom/code/cancer-gnn-nf/data/entrez_fpancanall_nbiogridhc_lbailey.csv'
-    },
-    {
-        'name': 'biogrid_cosmic',
-        'networkFile': '/home/essharom/code/cancer-gnn-nf/data/entrez_biogridhc.tsv',
-        'geneFile': '/home/essharom/code/cancer-gnn-nf/data/entrez_fpancanall_nbiogridhc_lcosmic.csv'
-    }
+    }#,
+    # {
+    #     'name': 'string_cosmic',
+    #     'networkFile': '/home/essharom/code/cancer-gnn-nf/data/entrez_stringhc.tsv',
+    #     'geneFile': '/home/essharom/code/cancer-gnn-nf/data/entrez_fpancanall_nstringhc_lcosmic.csv'
+    # },
+    # {
+    #     'name': 'biogrid',
+    #     'networkFile': '/home/essharom/code/cancer-gnn-nf/data/entrez_biogridhc.tsv',
+    #     'geneFile': '/home/essharom/code/cancer-gnn-nf/data/entrez_fpancanall_nbiogridhc_lbailey.csv'
+    # },
+    # {
+    #     'name': 'biogrid_cosmic',
+    #     'networkFile': '/home/essharom/code/cancer-gnn-nf/data/entrez_biogridhc.tsv',
+    #     'geneFile': '/home/essharom/code/cancer-gnn-nf/data/entrez_fpancanall_nbiogridhc_lcosmic.csv'
+    # }
     ]
 
-    models = ["sage", "gin", "gtn", "gcn2", "gcn", "gat", "gat3h", "hgcn", "phgcn"]
-    
+    #models = ["sage", "gin", "gtn", "gcn2", "gcn", "gat", "gat3h", "hgcn", "phgcn"]
+    models = ["gcn"]
 
     for data_pair in data_pairs:
         for model in models:

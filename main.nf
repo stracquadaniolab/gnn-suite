@@ -131,6 +131,7 @@ process HyperparameterOptimization {
         hyperopt.py ${geneFile} ${networkFile}\
             ${model} \
             ${dataSet} > best_trial_${model}_${dataSet}.txt
+        clean_hparams.py best_trial_${model}_${dataSet}.txt
     """
 }
 

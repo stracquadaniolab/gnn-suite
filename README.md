@@ -127,13 +127,18 @@ docker pull ghcr.io/stracquadaniolab/gnn-suite:latest
     models = ["gcn", "gat", ..., "new_model"]
     ```
 
-## Running the Hyperparameter Optimization Workflow
+## Hyperparameter Optimization with Optuna
 
-To run the hyperparameter optimization workflow using Nextflow:
+To run the hyperparameter optimization workflow using `optuna` defined in `hyperopt.py`, run the hyperparameter optimization workflow:
+
 ```bash
 nextflow run main.nf -profile docker,<experiment_file> -entry hyperopt
 ```
-The results of the search will be in `results/hyperparameters`.
+
+The results of the search will be stored in the `results/hyperparameters/<experiment_file>/` directory. You can find the best trial information in the `best_trial_<model>_<experiment>.txt` file.
+
+For more information on `optuna`, you can visit the official documentation at [https://optuna.readthedocs.io](https://optuna.readthedocs.io).
+
 
 ## FAQ
 In case:

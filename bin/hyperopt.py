@@ -7,6 +7,15 @@ import typer
 
 from gnn import run
 
+import os
+import sys
+import contextlib
+
+def run_silently(func, *args, **kwargs):
+    with open(os.devnull, 'w') as fnull:
+        with contextlib.redirect_stdout(fnull):
+            return func(*args, **kwargs)
+
 def objective_gnn(trial, model_name, gene_filename, network_filename, num_epochs=300):
     # Define hyperparameters to optimize
 
@@ -27,6 +36,9 @@ def objective_gnn(trial, model_name, gene_filename, network_filename, num_epochs
         verbose_interval= 10,
         dropout= dropout
     )
+
+    
+
     
     return bacc
 
@@ -64,8 +76,8 @@ def run_optuna(data_pair, model):
     model_name = model
 
     #testing num_epochs
-    num_epochs = 4
-    #num_epochs = 250
+    #num_epochs = 5
+    num_epochs = 250
     
     study = optuna.create_study(study_name=model_name+"_hp_search",
                                 direction="maximize")
