@@ -127,6 +127,14 @@ docker pull ghcr.io/stracquadaniolab/gnn-suite:latest
     models = ["gcn", "gat", ..., "new_model"]
     ```
 
+## Running the Hyperparameter Optimization Workflow
+
+To run the hyperparameter optimization workflow using Nextflow:
+```bash
+nextflow run main.nf -profile docker,<experiment_file> -entry hyperopt
+```
+The results of the search will be in `results/hyperparameters`.
+
 ## FAQ
 In case:
 ```groovy

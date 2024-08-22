@@ -19,6 +19,7 @@ println "Replicates: ${params.replicates}"
 println "Metrics:  ${params.metrics}"
 println "Eval-q: ${params.eval_threshold}"
 println "Verbose interval: ${params.verbose_interval}"
+println "Data set: ${params.dataSet}"
 
 println ""
 
@@ -111,23 +112,41 @@ process CollectStats {
 }
 
 process HyperparameterOptimization {
+    
+
+    tag "${dataSet}-${model}"  
+    
+    publishDir "${resultsDir}/hyperparameters/${dataSet}", pattern: "best_trial_${model}_${dataSet}.txt", mode: 'copy'
+
     input:
-    path config_file
-    path data_files
-  
+        tuple path(geneFile),
+        path(networkFile),
+        val(model),
+        val(dataSet)
 
     output:
-    path "optuna_${params.dataSet}.json" into optuna_results
+        path "best_trial_${model}_${dataSet}.txt", emit: best_trial_output
 
-    script:
     """
-    python3 hyperopt_all_2.py --config ${config_file} --data ${data_files} --output optuna_${params.dataSet}.json
+        hyperopt.py ${geneFile} ${networkFile}\
+            ${model} \
+            ${dataSet} > best_trial_${model}_${dataSet}.txt
     """
 }
 
-workflow hyperoptWorkflow {
-    HyperparameterOptimization(config_file: params.config, data_files: params.data)
+workflow hyperopt {
+    geneChan = channel.fromPath(params.geneFile)
+    networkChan = channel.fromPath(params.networkFile)
+    modelChan = channel.from(params.models)
+    dataSetChan = channel.value(params.dataSet)
+    hparamChan = geneChan.combine(networkChan).combine(modelChan).combine(dataSetChan)
+
+    hparams = HyperparameterOptimization(
+        hparamChan
+    )
+    hparams.view()
 }
+
 
 
 workflow {
