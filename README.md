@@ -48,6 +48,10 @@ nextflow run stracquadaniolab/gnn-suite -profile docker,test
 ```bash
 nextflow run stracquadaniolab/gnn-suite -profile docker,<experiment_file>
 ```
+The results of the experimetn will be stored in the `results/data/<experiment_file>/` and `results/figures/<experiment_file>/` directory.
+
+For more information on `Nextflow`, you can visit the official documentation at [nextflow.io/docs](https://www.nextflow.io/docs/latest/index.html).
+
 
 ## Docker Image
  
@@ -141,12 +145,13 @@ For more information on `optuna`, you can visit the official documentation at [h
 
 
 ## FAQ
-In case:
+If you encounter the following error message when attempting to execute the script:
+
 ```groovy
 Command error:
   .command.sh: line 2: ../gnn-suite/bin/plot.py: Permission denied
 ```
-Give permission to run:
+You need to grant the necessary execution permissions to the specific python scripts. You can do this by running (e.g. `plot.py`):
 ```groovy
  chmod +x /home/<path>/code/gnn-suite/bin/plot.py
 ```

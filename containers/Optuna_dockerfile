@@ -1,0 +1,3 @@
+FROM ghcr.io/stracquadaniolab/gnn-suite:latest
+
+RUN pip install optuna
