@@ -77,7 +77,7 @@ docker pull ghcr.io/stracquadaniolab/gnn-suite:latest
       dropout = 0.2
       alpha = 0.1
       theta = 1
-      dataSet = "<cexperiment_file_tag>"
+      dataSet = "<experiment_file_tag>"
     }
     ```
 
