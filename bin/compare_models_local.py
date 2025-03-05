@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 import argparse
 import pandas as pd
 import seaborn as sns
@@ -82,7 +85,11 @@ def plot_line_plots(line_plot, data_files, metrics, model_names, runs):
 
 def extract_info_from_file_name(file_name):
     parts = os.path.splitext(file_name)[0].split('-')
-    parts = parts[3:]
+    print("Parts:")
+    print(parts)
+    parts = parts[2:]
+    print("Sliced parts:")
+    print(parts)
     model_name, epoch_str, run_prefix, run_str, base_name = parts[:5]
     epoch = int(epoch_str)
     run = int(run_str)  
