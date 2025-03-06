@@ -116,7 +116,8 @@ def max_bacc_stats(filename, data_files, model_names, runs):
     max_bacc_stats = grouped.loc[idx]
     
     # Combine mean and std in one column with "±" symbol
-    max_bacc_stats['mean ± sems'] = max_bacc_stats['mean'].round(3).astype(str) + " ± " + max_bacc_stats['sems'].round(3).astype(str)
+   # max_bacc_stats['mean ± sems'] = max_bacc_stats['mean'].round(3).astype(str) + " ± " + max_bacc_stats['sems'].round(3).astype(str)
+    max_bacc_stats['mean ± std'] = max_bacc_stats['mean'].round(3).astype(str) + " ± " + max_bacc_stats['std'].round(3).astype(str)
 
     # Save the stats to a file
     max_bacc_stats.to_latex(filename, index=False, columns=['model','epoch', 'mean ± std'])
