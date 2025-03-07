@@ -53,7 +53,7 @@ def plot_line_plots(line_plot, data_files, metrics, model_names, runs):
     
     # print(all_data)
 
-    sns.set(style='whitegrid', font_scale=1.2)
+    sns.set(style='whitegrid', font_scale=1.6)
     mpl.rcParams['mathtext.fontset'] = 'cm'  # Use LaTeX font for math symbols
     
     num_plots = len(metrics)
@@ -72,13 +72,14 @@ def plot_line_plots(line_plot, data_files, metrics, model_names, runs):
         sns.lineplot(data=all_data, x='epoch', y=metric, hue='model', errorbar='se', ax=ax, palette=palette)
             
         ax.set(xlabel='Epoch', ylabel=metric.capitalize())
-        ax.set_title(f"{metric.capitalize()} Over Epochs", fontsize=14, fontweight='bold')
-        ax.legend()
+        ax.set_title(f"{metric.capitalize()} Over Epochs", fontsize=16, fontweight='bold')
+        handles, labels = ax.get_legend_handles_labels()
+        ax.legend(handles, [label.upper() for label in labels])
         
-    fig.suptitle("GNN Training Progress - Line Plots", fontsize=16, fontweight='bold', y=0.94)
+    fig.suptitle("GNN Training Progress", fontsize=22, fontweight='bold', y=0.94)
     fig.tight_layout(rect=[0, 0, 1, 0.94])
 
-    plt.savefig(line_plot)
+    plt.savefig(line_plot, dpi=300)
     plt.close()
     print(f"Line plots saved as {line_plot}")
 
@@ -124,7 +125,6 @@ def max_bacc_stats(filename, data_files, model_names, runs):
     print(f"Stats saved as {filename}")
     print(max_bacc_stats[['model', 'epoch', 'mean ± std']])
     return max_bacc_stats
-
 
 
 
