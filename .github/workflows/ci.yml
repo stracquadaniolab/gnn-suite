@@ -30,12 +30,13 @@ jobs:
         run: find /home/runner/work/gnn-suite/gnn-suite -name "nextflow" -exec mv {} /usr/local/bin/nextflow \;
 
       - name: Cache Nextflow dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ env.HOME }}/.nextflow
           key: ${{ runner.os }}-nextflow-${{ hashFiles('nextflow.config') }}
           restore-keys: |
             ${{ runner.os }}-nextflow-
+
             
       - name: List available Docker images
         run: |
