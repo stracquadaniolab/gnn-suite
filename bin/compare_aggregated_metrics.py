@@ -108,8 +108,6 @@ def make_boxplot(df, metric_name, output_file):
     plt.close()
     print(f"Box plot saved to {output_file} at 300 dpi")
 
-
-
 def create_bacc_summary_table(files, output_file="bacc_summary.csv"):
     """
     Creates a summary table of bacc_mean and bacc_std for each network type and model.
