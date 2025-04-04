@@ -112,7 +112,6 @@ process CollectStats {
 }
 
 process HyperparameterOptimization {
-    
 
     tag "${dataSet}-${model}"  
     
