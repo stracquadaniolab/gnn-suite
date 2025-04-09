@@ -108,18 +108,6 @@ def run_optuna(data_pair, model):
     for key, value in best_trial.params.items():
         print(f"    {key}: {value}")
 
-    # Save the best trial to a file
-    # save_dir = '/home/essharom/code/cancer-gnn-nf/results/hyperparameters'
-
-    # CHANGE FILENAME TO DIFFERENT MODELS
-    # Save the best trial to a file
-    #with open(f'{save_dir}/best_trial_{model_name}_{data_name}.txt', 'w') as f:
-    #    f.write("Best trial:\n")
-    #    f.write(f"  Value: {best_trial.value}\n")
-    #    f.write("  Params:\n")
-    #    for key, value in best_trial.params.items():
-    #        f.write(f"    {key}: {value}\n")
-
 
 def run_hyperopt(
         gene_filename: str,
