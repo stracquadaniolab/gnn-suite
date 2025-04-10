@@ -24,7 +24,7 @@ def objective_gnn(trial, model_name, gene_filename, network_filename, num_epochs
     weight_decay = trial.suggest_float('weight_decay', 1e-5, 5e-1, log=True)
     
     # Run the model with the hyperparameters
-    bacc = run(
+    max_bacc = run(
         gene_filename = gene_filename,
         network_filename = network_filename,
         train_size = 0.8,
@@ -37,10 +37,7 @@ def objective_gnn(trial, model_name, gene_filename, network_filename, num_epochs
         dropout= dropout
     )
 
-    
-
-    
-    return bacc
+    return max_bacc
 
 def objective_gcn2(trial, model_name, gene_filename, network_filename, num_epochs=300):
     # Define hyperparameters to optimize
@@ -51,7 +48,7 @@ def objective_gcn2(trial, model_name, gene_filename, network_filename, num_epoch
     weight_decay = trial.suggest_float('weight_decay', 1e-5, 5e-1, log=True)
     
     # Run the model with the hyperparameters
-    bacc = run(
+    max_bacc = run(
         gene_filename = gene_filename,
         network_filename = network_filename,
         train_size = 0.8,
@@ -66,7 +63,7 @@ def objective_gcn2(trial, model_name, gene_filename, network_filename, num_epoch
         theta= theta
     )
     
-    return bacc
+    return max_bacc
 
 
 def run_optuna(data_pair, model):
@@ -75,10 +72,10 @@ def run_optuna(data_pair, model):
     data_name = data_pair['name']
     model_name = model
 
-    #testing num_epochs
-    #num_epochs = 5
+    # Set the number of epochs for training
     num_epochs = 250
     
+    # Create a study object
     study = optuna.create_study(study_name=model_name+"_hp_search",
                                 direction="maximize")
     
