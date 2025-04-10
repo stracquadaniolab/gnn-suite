@@ -400,9 +400,6 @@ def run(
     model = build_model(model_name, data, dropout, alpha, theta).to(device)
     data = data.to(device)
 
-    
-
-
     # Initialize the optimizer
     optimizer = torch.optim.Adam(
         model.parameters(), lr=learning_rate, weight_decay=weight_decay
@@ -410,7 +407,6 @@ def run(
 
     # Compute the weight for positive samples
     pos_weight = compute_positive_sample_weight(data)
-
 
     # Print the header for the training progress output
     print(
@@ -429,6 +425,8 @@ def run(
         )
     )
 
+    # instantiate BACC array for hyperparameter search
+    bacc_array = []
 
     for epoch in range(1, epochs + 1):
         loss = train(model, data, optimizer, weight=pos_weight)
@@ -449,6 +447,10 @@ def run(
                     epoch, loss, tn, fp, fn, tp, precision, recall, acc, bacc, auc
                 )
             )
+
+            # Append the balanced accuracy to the array for hyperparameter search
+            bacc_array.append(bacc)
+
             print(
                 "Train: {:>10} {:>10.5g} {:>10} {:>10} {:>10} {:>10} {:>10.3f} {:>10.3f} {:>10.3f} {:>10.3f} {:>10.3f} ".format(
                     epoch, loss, tn_train, fp_train, fn_train, tp_train, precision_train, recall_train, acc_train, bacc_train, auc_train
@@ -459,8 +461,10 @@ def run(
                     epoch, loss, tn_all, fp_all, fn_all, tp_all, precision_all, recall_all, acc_all, bacc_all, auc_all
                 )
             )
-    return bacc
 
+    # return the max of the balanced accuracy array
+    max_bacc = max(bacc_array)
+    return max_bacc
 
 if __name__ == "__main__":
     typer.run(run)
