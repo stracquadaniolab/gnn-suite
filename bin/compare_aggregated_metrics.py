@@ -105,6 +105,7 @@ def make_boxplot(df, metric_name, output_file):
     plt.tight_layout()
     # Save the figure at 300 dpi
     plt.savefig(output_file, dpi=300)
+    plt.savefig('bacc_asd_boxplot.pdf', dpi=300)
     plt.close()
     print(f"Box plot saved to {output_file} at 300 dpi")
 
